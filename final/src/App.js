@@ -3,41 +3,96 @@ import React, { useState } from 'react';
 export default function App() {
 	const questions = [
 		{
-			questionText: 'What is the capital of France?',
+			questionText: 'Evaluate 1/15 + 4/5',
 			answerOptions: [
-				{ answerText: 'New York', isCorrect: false },
-				{ answerText: 'London', isCorrect: false },
-				{ answerText: 'Paris', isCorrect: true },
-				{ answerText: 'Dublin', isCorrect: false },
+				{ answerText: '5/20', isCorrect: false },
+				{ answerText: '1/4', isCorrect: false },
+				{ answerText: '13/15', isCorrect: true },
+				{ answerText: '43/15', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'Who is CEO of Tesla?',
+			questionText: 'Add the fractions 2/7 + 13/28',
 			answerOptions: [
-				{ answerText: 'Jeff Bezos', isCorrect: false },
-				{ answerText: 'Elon Musk', isCorrect: true },
-				{ answerText: 'Bill Gates', isCorrect: false },
-				{ answerText: 'Tony Stark', isCorrect: false },
+				{ answerText: '3/7', isCorrect: false },
+				{ answerText: '3/4', isCorrect: true },
+				{ answerText: '15/35', isCorrect: false },
+				{ answerText: '22/28', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'The iPhone was created by which company?',
+			questionText: 'Determine the value of 5/21 + 1/3',
 			answerOptions: [
-				{ answerText: 'Apple', isCorrect: true },
-				{ answerText: 'Intel', isCorrect: false },
-				{ answerText: 'Amazon', isCorrect: false },
-				{ answerText: 'Microsoft', isCorrect: false },
+				{ answerText: '4/7', isCorrect: true },
+				{ answerText: '6/24', isCorrect: false },
+				{ answerText: '1/4', isCorrect: false },
+				{ answerText: '12/21', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'How many Harry Potter books are there?',
+			questionText: '2/14 + 5/24',
 			answerOptions: [
-				{ answerText: '1', isCorrect: false },
-				{ answerText: '4', isCorrect: false },
-				{ answerText: '6', isCorrect: false },
-				{ answerText: '7', isCorrect: true },
+				{ answerText: '7/68', isCorrect: false },
+				{ answerText: '4/16', isCorrect: false },
+				{ answerText: '10/38', isCorrect: false },
+				{ answerText: '59/168', isCorrect: true },
 			],
 		},
+		{
+			questionText: '3/5 + 3/8',
+			answerOptions: [
+				{ answerText: '19/20', isCorrect: false },
+				{ answerText: '39/40', isCorrect: true },
+				{ answerText: '6/13', isCorrect: false },
+				{ answerText: '9/40', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'Determine the value of 2/12 + 2/4',
+			answerOptions: [
+				{ answerText: '4/48', isCorrect: false },
+				{ answerText: '1/4', isCorrect: false },
+				{ answerText: '2/3', isCorrect: true },
+				{ answerText: '1/12', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'Add the fractions 2/7 + 1/4',
+			answerOptions: [
+				{ answerText: '2/14', isCorrect: false },
+				{ answerText: '1/7', isCorrect: false },
+				{ answerText: '3/11', isCorrect: false },
+				{ answerText: '15/28', isCorrect: true },
+			],
+		},
+		{
+			questionText: 'Determine the value of 6/9 + 1/4',
+			answerOptions: [
+				{ answerText: '7/13', isCorrect: false },
+				{ answerText: '1', isCorrect: true },
+				{ answerText: '1/6', isCorrect: false },
+				{ answerText: '6/36', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'Add the fractions 1/4 + 2/5',
+			answerOptions: [
+				{ answerText: '21/15', isCorrect: false },
+				{ answerText: '13/20', isCorrect: true },
+				{ answerText: '2/97', isCorrect: false },
+				{ answerText: '1/10', isCorrect: false },
+			],
+		},
+		{
+			questionText: '5/9 + 1/4',
+			answerOptions: [
+				{ answerText: '6/13', isCorrect: false },
+				{ answerText: '29/13', isCorrect: false },
+				{ answerText: '5/36', isCorrect: false },
+				{ answerText: '29/36', isCorrect: true },
+			],
+		},
+		
 	];
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
