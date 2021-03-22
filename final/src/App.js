@@ -120,30 +120,45 @@ export default function App() {
 	const [showInstructions, setShowInstructions] = useState(false);
 	const [showPlayInstructions, setShowPlayInstructions] = useState(false);
 	const [score, setScore] = useState(0);
+	const [list, setList] = useState(questions);
 
-	const handleAnswerOptionClick = (isCorrect) => {
+	const handleAnswerOptionClick = (isCorrect, list, answer_index) => {
 		if (isCorrect) {
 			setScore(score + 1);
 		}
 
+		console.log(list);
+
+		const newList = list[currentQuestion].answerOptions.forEach((answerOption, index) => {
+			if(answerOption.id === answer_index){
+				answerOption.isAnswer = true;
+			}else{
+				answerOption.isAnswer = false;
+			}
+		});
+		setList(newList);
+		
 		const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
+		if (nextQuestion < list.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
 			setShowScore(true);
 		}
+
 	};
 
-	// const selectOptionClick = (event, question_index, answer_index) =>{
-	// 	questions[question_index].answerOptions.forEach((answerOption, index) => {
-	// 		if(answerOption.id === answer_index){
-	// 			answerOption.isAnswer = true;
-	// 		}else{
-	// 			answerOption.isAnswer = false;
-	// 		}
-	// 	});
-	// 	event.target.classList.add('active');
-	// };
+	const selectOptionClick = (event, question_index, answer_index) =>{
+		const newList = list[question_index].answerOptions.forEach((answerOption, index) => {
+			if(answerOption.id === answer_index){
+				answerOption.isAnswer = true;
+			}else{
+				answerOption.isAnswer = false;
+			}
+		});
+		event.target.classList.add('active');
+	
+		setList(newList);
+	};
 
 	const showInstructionsClick = (event) =>{
 		setShowPlayInstructions(false);
@@ -235,12 +250,12 @@ export default function App() {
 									</div> ~<br />
 									<div className='question-text'>
 										<span className="question-span">
-											{questions[currentQuestion].questionText}
+											{list[currentQuestion].questionText}
 										</span>
 									</div>
 								</div>~<br />
 								<center>
-									<img src={questions[currentQuestion].image} alt="logo" width="500" />
+									<img src={list[currentQuestion].image} alt="logo" width="500" />
 								</center>~<br />
 								<div className="answers-list">
 									{/* <ul className="list-group">
@@ -249,8 +264,8 @@ export default function App() {
 										))}
 									</ul> */}
 									<div className='answer-section'>
-										{questions[currentQuestion].answerOptions.map((answerOption) => (
-											<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button> 
+										{list[currentQuestion].answerOptions.map((answerOption) => (
+											<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect, list, answerOption.id)}>{answerOption.answerText}</button> 
 										))}
 									</div>
 								</div>~<br />
