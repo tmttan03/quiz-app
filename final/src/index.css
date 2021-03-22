@@ -267,11 +267,20 @@ button svg {
   border-radius: 15px;
 }
 
+button.active{
+  color: #ffffff;
+  background-color: #FFA35E;
+}
+
+
 span.navbar-text.d-sm-inline-block.active {
   color: #8C9EF4;
   text-decoration: underline;
   font-weight: 700;
+  background-color: none!important;
 }
+
+
 
 .btn-link{
   width: 10%;
@@ -297,7 +306,8 @@ span.navbar-text.d-sm-inline-block.active {
   background-color: #FFA35E;
 }
 
-.active{
-  color: #ffffff;
-  background-color: #FFA35E;
+
+.score{
+  color: #8C9EF4;
+  font-size: larger;
 }

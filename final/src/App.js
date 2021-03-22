@@ -122,39 +122,28 @@ export default function App() {
 	const [score, setScore] = useState(0);
 	const [list, setList] = useState(questions);
 
-	const handleAnswerOptionClick = (isCorrect, list, answer_index) => {
-		if (isCorrect) {
+	const handleAnswerOptionClick = (answerOptionI, list) => {
+		if (answerOptionI.isCorrect) {
 			setScore(score + 1);
 		}
 		list[currentQuestion].answerOptions.forEach((answerOption, index) => {
-			if(answerOption.id === answer_index){
+			if(answerOption.id === answerOptionI.id){
 				answerOption.isAnswer = true;
 			}else{
 				answerOption.isAnswer = false;
 			}
 		});
+		
 		setList(list);
+
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < list.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
 			setShowScore(true);
 		}
-
 	};
 
-	const selectOptionClick = (event, question_index, answer_index) =>{
-		const newList = list[question_index].answerOptions.forEach((answerOption, index) => {
-			if(answerOption.id === answer_index){
-				answerOption.isAnswer = true;
-			}else{
-				answerOption.isAnswer = false;
-			}
-		});
-		event.target.classList.add('active');
-	
-		setList(newList);
-	};
 
 	const showInstructionsClick = (event) =>{
 		setShowPlayInstructions(false);
@@ -234,7 +223,7 @@ export default function App() {
 					<div className={"gameDiv " + (showInstructions || showPlayInstructions ? 'hidden' : 'show') }>
 						{showScore ? (
 							<div className='score-section'>
-								You scored {score} out of {questions.length}
+								<h1 className="mt-5">You scored <span className="score">{score}</span> out of {questions.length}</h1>
 								<br />
 								<a href="/">Play Again</a>
 							</div>
@@ -254,14 +243,9 @@ export default function App() {
 									<img src={list[currentQuestion].image} alt="logo" width="500" />
 								</center>~<br />
 								<div className="answers-list">
-									{/* <ul className="list-group">
-										{questions[currentQuestion].answerOptions.map((answerOption, index) => (
-											<li key={"unique" + answerOption.id} className={"list-group-item" + (answerOption.isAnswer ? 'active' : '')}  onClick={(e) => selectOptionClick(e, currentQuestion, answerOption.id)}>{answerOption.answerText}</li>
-										))}
-									</ul> */}
 									<div className='answer-section'>
 										{list[currentQuestion].answerOptions.map((answerOption) => (
-											<button className={(answerOption.isAnswer ? 'active' : '')} onClick={() => handleAnswerOptionClick(answerOption.isCorrect, list, answerOption.id)}>{answerOption.answerText}</button> 
+											<button className={(answerOption.isAnswer ? 'active' : '')} onClick={() => handleAnswerOptionClick(answerOption, list)}>{answerOption.answerText}</button> 
 										))}
 									</div>
 								</div>~<br />
