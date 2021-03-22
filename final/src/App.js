@@ -126,18 +126,14 @@ export default function App() {
 		if (isCorrect) {
 			setScore(score + 1);
 		}
-
-		console.log(list);
-
-		const newList = list[currentQuestion].answerOptions.forEach((answerOption, index) => {
+		list[currentQuestion].answerOptions.forEach((answerOption, index) => {
 			if(answerOption.id === answer_index){
 				answerOption.isAnswer = true;
 			}else{
 				answerOption.isAnswer = false;
 			}
 		});
-		setList(newList);
-		
+		setList(list);
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < list.length) {
 			setCurrentQuestion(nextQuestion);
@@ -265,7 +261,7 @@ export default function App() {
 									</ul> */}
 									<div className='answer-section'>
 										{list[currentQuestion].answerOptions.map((answerOption) => (
-											<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect, list, answerOption.id)}>{answerOption.answerText}</button> 
+											<button className={(answerOption.isAnswer ? 'active' : '')} onClick={() => handleAnswerOptionClick(answerOption.isCorrect, list, answerOption.id)}>{answerOption.answerText}</button> 
 										))}
 									</div>
 								</div>~<br />
