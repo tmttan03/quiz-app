@@ -8,7 +8,7 @@ export default function App() {
 			answerOptions: [
 				{ id: '11', answerText: '1/6', isCorrect: false, isAnswer: false },
 				{ id: '12', answerText: '1/4', isCorrect: false, isAnswer: false },
-				{ id: '13', answerText: '2/18', isCorrect: true, isAnswer: false },
+				{ id: '13', answerText: '1/2', isCorrect: true, isAnswer: false },
 				{ id: '14', answerText: '1/18', isCorrect: false, isAnswer: false },
 			],
 			image: "/q-1.png"
