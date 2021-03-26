@@ -5,11 +5,11 @@ const path = require("path");
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.use(express.static(path.join(__dirname, '../final/build')));
+app.use(express.static(path.join(__dirname, './final/build')));
 
 // This route serves the React app
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../final/build/index.html'));
+    res.sendFile(path.join(__dirname, './final/build/index.html'));
 });
 
 
