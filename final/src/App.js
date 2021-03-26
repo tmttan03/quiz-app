@@ -172,12 +172,24 @@ export default function App() {
 		<div className='app'>
 			<header>
 				<div className="container">
-					<nav className="navbar navbar bg-transparenet">
-						<a className="navbar-brand" href="/">
-							<img src={'/logo512-n.png'} alt="logo" />
-						</a>
-						<span className="navbar-text ml-auto d-sm-inline-block" id="showInstructions" onClick={(e) => showInstructionsClick(e)}>How to Solve Fractions</span>
-						<span className="navbar-text d-sm-inline-block" id="showPlayInstructions" onClick={(e) => showPlayInstructionsClick(e)}>How to Play</span>
+					<nav className="navbar sticky-top navbar-light">
+						<a class="navbar-brand" href="/"><img src={'/logo512-n.png'} alt="logo" /></a>
+
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarNavDropdown">
+							<ul class="navbar-nav">
+								<li class="nav-item">
+									<span className="nav-link" id="showInstructions" onClick={(e) => showInstructionsClick(e)}>How to Solve Fractions</span>
+								</li>
+								<li class="nav-item">
+									<span className="nav-link" id="showPlayInstructions" onClick={(e) => showPlayInstructionsClick(e)}>How to Play</span>
+								</li>
+							</ul>
+						</div>
+						{/* <span className="navbar-text ml-auto d-sm-inline-block" id="showInstructions" onClick={(e) => showInstructionsClick(e)}>How to Solve Fractions</span>
+						<span className="navbar-text d-sm-inline-block" id="showPlayInstructions" onClick={(e) => showPlayInstructionsClick(e)}>How to Play</span> */}
 					</nav>
 				</div>
 			</header>
@@ -185,23 +197,24 @@ export default function App() {
 				<div className="container">
 					<div className={"instructionsDiv " + (showInstructions ? 'show' : 'hidden') }>
 						<div className='score-section'>
+							<h3 className="mt-3 font-theme">How to Solve Fractions</h3> <br></br>
 							<div className="row">
 								<div className="col-sm-6">
-									<img src={'/how-to-step-1.png'} alt="step1" width="500" />
+									<img className="img-fluid" src={'/how-to-step-1.png'} alt="step1" width="500" />
 								</div>
 								<div className="col-sm-6">
-									<img src={'/how-to-step-2.png'} alt="step2" width="500"/>
+									<img className="img-fluid" src={'/how-to-step-2.png'} alt="step2" width="500"/>
 								</div>
 							</div>
 							<div className="row">
 								<div className="col-sm-6">
-									<img src={'/how-to-step-3.png'} alt="step3" width="500" />
+									<img className="img-fluid" src={'/how-to-step-3.png'} alt="step3" width="500" />
 								</div>
 								<div className="col-sm-6">
-									<img src={'/how-to-step-4.png'} alt="step4" width="500"/>
+									<img className="img-fluid" src={'/how-to-step-4.png'} alt="step4" width="500"/>
 								</div>
-							</div>
-
+							</div> 
+							<br></br>
 							<center>
 								<a className="btn-link" href="/">PLAY NOW!</a>
 							</center>
@@ -212,7 +225,15 @@ export default function App() {
 
 					<div className={"playInstructionsDiv " + (showPlayInstructions ? 'show' : 'hidden')}>
 						<div className='score-section'>
-							<img src={'/how-to-play.png'} alt="step1" width="1000" />
+							<h3 className="mt-5 font-theme">How to Play</h3> <br></br>
+							<div className="d-flex justify-content-center">
+								<ol className="how-to-list">
+									<li>There is a menu button on the rightmost part of the screen. It's a list of Instruction Navigation. "How to Solve Fractions" will provide a guide or mini lesson review. "How to Play", it will be a quick guide on how you can use the application</li>
+									<li>The Header span inside the Question Pane, "Question 1/10" , it is the counter or indicator in which what question now are you currently in.</li>
+									<li>To submit your answer, just click the button so you'll be able to proceed with the next question</li>
+									<li>On the bottom part, there are 2 buttons "Next Question" and "Previous Question" which will navigate through the questions</li>
+								</ol>
+							</div>
 							<center>
 								<a className="btn-link" href="/">PLAY NOW!</a>
 							</center>
@@ -225,10 +246,13 @@ export default function App() {
 							<div className='score-section'>
 								<h1 className="mt-5">You scored <span className="score">{score}</span> out of {questions.length}</h1>
 								<br />
-								<a href="/">Play Again</a>
+								<a className="btn-link" href="/">Play Again</a>
 							</div>
 						) : (
 							<>
+								<br></br>
+								<br></br>
+
 								<div className='question-section'>
 									<div className='question-count'>
 										<span>QUESTION <span className="currentQuestion">{currentQuestion + 1}</span></span>/{questions.length}
@@ -240,7 +264,7 @@ export default function App() {
 									</div>
 								</div>~<br />
 								<center>
-									<img src={list[currentQuestion].image} alt="logo" width="500" />
+									<img className="img-fluid" src={list[currentQuestion].image} alt="logo" width="500" />
 								</center>~<br />
 								<div className="answers-list">
 									<div className='answer-section'>
@@ -250,17 +274,13 @@ export default function App() {
 									</div>
 								</div>~<br />
 								<div className="options-section">
-									
 									{currentQuestion !== 0 &&
 										<span className="previousBtn" onClick={() => prevQuestionClick(currentQuestion)}>{"<"} PREVIOUS QUESTION</span>
 									}
 									
-									{/* <span className="answerBtn">ANSWER</span> */}
-
 									{currentQuestion !== 9 &&
 										<span className="nextBtn" onClick={() => nextQuestionClick(currentQuestion)}>NEXT QUESTION {">"}</span>
 									}
-									
 								</div>
 							</>
 						)}
