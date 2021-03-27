@@ -62,7 +62,7 @@ export default function App() {
 				{ answerText: '2/14', isCorrect: false },
 				{ answerText: '1/7', isCorrect: false },
 				{ answerText: '3/11', isCorrect: false },
-				{ answerText: '15/28', isCorrect: true },
+				{ answerText: '16/7', isCorrect: true },
 			],
 		},
 		{
