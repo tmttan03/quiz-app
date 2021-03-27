@@ -119,6 +119,7 @@ export default function App() {
 	const [showScore, setShowScore] = useState(false);
 	const [showInstructions, setShowInstructions] = useState(false);
 	const [showPlayInstructions, setShowPlayInstructions] = useState(false);
+	const [showInteractiveCalculator, setshowInteractiveCalculator] = useState(false);
 	const [score, setScore] = useState(0);
 	const [list, setList] = useState(questions);
 
@@ -147,15 +148,31 @@ export default function App() {
 
 	const showInstructionsClick = (event) =>{
 		setShowPlayInstructions(false);
+		setshowInteractiveCalculator(false);
 		setShowInstructions(true);
 		document.getElementById('showPlayInstructions').classList.remove('active');
+		document.getElementById('showInstructions').classList.remove('active');
+		document.getElementById('showInteractiveCalculator').classList.remove('active');
 		event.target.classList.add('active');
 	};
 
 	const showPlayInstructionsClick = (event) =>{
 		setShowInstructions(false);
+		setshowInteractiveCalculator(false);
 		setShowPlayInstructions(true);
+		document.getElementById('showPlayInstructions').classList.remove('active');
 		document.getElementById('showInstructions').classList.remove('active');
+		document.getElementById('showInteractiveCalculator').classList.remove('active');
+		event.target.classList.add('active');
+	};
+
+	const showInteractiveCalculatorClick = (event) =>{
+		setShowInstructions(false);
+		setShowPlayInstructions(false);
+		setshowInteractiveCalculator(true);
+		document.getElementById('showPlayInstructions').classList.remove('active');
+		document.getElementById('showInstructions').classList.remove('active');
+		document.getElementById('showInteractiveCalculator').classList.remove('active');
 		event.target.classList.add('active');
 	};
 
@@ -186,8 +203,12 @@ export default function App() {
 								<li class="nav-item">
 									<span className="nav-link" id="showPlayInstructions" onClick={(e) => showPlayInstructionsClick(e)}>How to Play</span>
 								</li>
+								<li class="nav-item">
+									<span className="nav-link" id="showInteractiveCalculator" onClick={(e) => showInteractiveCalculatorClick(e)}>Interactive Calculator</span>
+								</li>
 							</ul>
 						</div>
+
 						{/* <span className="navbar-text ml-auto d-sm-inline-block" id="showInstructions" onClick={(e) => showInstructionsClick(e)}>How to Solve Fractions</span>
 						<span className="navbar-text d-sm-inline-block" id="showPlayInstructions" onClick={(e) => showPlayInstructionsClick(e)}>How to Play</span> */}
 					</nav>
@@ -222,6 +243,21 @@ export default function App() {
 						</div>
 					</div>
 
+					<div className={"interactiveDiv " + (showInteractiveCalculator ? 'show' : 'hidden') }>
+						<div className='score-section'>
+							<h3 className="mt-3 font-theme">Interactive Calculator</h3> <br></br>
+
+							<center>
+								<embed className="embed-class" type="text/html" src="https://www.dadsworksheets.com/fraction-calculator-iframe.html#VX1X4-adding-VX3X8" width="700" height="530"/>
+							</center>
+							<br></br>
+							<center>
+								<a className="btn-link" href="/">PLAY NOW!</a>
+							</center>
+						
+						</div>
+					</div>
+
 
 					<div className={"playInstructionsDiv " + (showPlayInstructions ? 'show' : 'hidden')}>
 						<div className='score-section'>
@@ -241,7 +277,7 @@ export default function App() {
 						</div>
 					</div>
 
-					<div className={"gameDiv " + (showInstructions || showPlayInstructions ? 'hidden' : 'show') }>
+					<div className={"gameDiv " + (showInstructions || showPlayInstructions || showInteractiveCalculator ? 'hidden' : 'show') }>
 						{showScore ? (
 							<div className='score-section'>
 								<h1 className="mt-5">You scored <span className="score">{score}</span> out of {questions.length}</h1>

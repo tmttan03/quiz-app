@@ -331,3 +331,17 @@ span.navbar-text.d-sm-inline-block.active {
 .font-theme{
   color: #8C9EF4;
 }
+
+.embed-class{
+  overflow: none;
+}
+
+embed .frac-share{
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .embed-class {
+    width: 95%;
+  } 
+}
